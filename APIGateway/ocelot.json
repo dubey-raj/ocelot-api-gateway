@@ -1,0 +1,51 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/prd/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7071
+        }
+      ],
+      "UpstreamPathTemplate": "/product/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "SwaggerKey": "ProductsService"
+    },
+    {
+      "DownstreamPathTemplate": "/rcm/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7070
+        }
+      ],
+      "UpstreamPathTemplate": "/recommendations/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "SwaggerKey": "RecommendationService"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "ProductsService",
+      "Config": {
+        "Name": "Product API",
+        "Version": "v1",
+        "Url": "https://localhost:7070/swagger/v1/swagger.json"
+      }
+    },
+    {
+      "Key": "RecommendationService",
+      "Config": {
+        "Name": "Recommendation API",
+        "Version": "v1",
+        "Url": "https://localhost:7071/swagger/v1/swagger.json"
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5280"
+  }
+}
