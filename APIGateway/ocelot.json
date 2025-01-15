@@ -1,6 +1,21 @@
 {
   "Routes": [
     {
+      "DownstreamPathTemplate": "/user/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7075
+        }
+      ],
+      "UpstreamPathTemplate": "/user/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+      "SwaggerKey": "user"
+    },
+    {
+      "UpstreamPathTemplate": "/product/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
       "DownstreamPathTemplate": "/prd/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
@@ -9,43 +24,101 @@
           "Port": 7071
         }
       ],
-      "UpstreamPathTemplate": "/product/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST" ],
-      "SwaggerKey": "ProductsService"
+      "SwaggerKey": "products"
     },
     {
-      "DownstreamPathTemplate": "/rcm/{everything}",
+      "DownstreamPathTemplate": "/cart/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7070
+          "Port": 7073
         }
       ],
-      "UpstreamPathTemplate": "/recommendations/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST" ],
-      "SwaggerKey": "RecommendationService"
+      "UpstreamPathTemplate": "/cart/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+      "SwaggerKey": "cart"
+    },
+    {
+      "DownstreamPathTemplate": "/order/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7077
+        }
+      ],
+      "UpstreamPathTemplate": "/order/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+      "SwaggerKey": "order"
+    },
+    {
+      "DownstreamPathTemplate": "/payments/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7079
+        }
+      ],
+      "UpstreamPathTemplate": "/payments/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+      "SwaggerKey": "payment"
     }
   ],
   "SwaggerEndPoints": [
     {
-      "Key": "ProductsService",
-      "Config": {
-        "Name": "Product API",
-        "Version": "v1",
-        "Url": "https://localhost:7070/swagger/v1/swagger.json"
-      }
+      "Key": "user",
+      "Config": [
+        {
+          "Name": "Users API",
+          "Version": "v1",
+          "Url": "https://localhost:7075/swagger/v1/swagger.json"
+        }
+      ]
     },
     {
-      "Key": "RecommendationService",
-      "Config": {
-        "Name": "Recommendation API",
-        "Version": "v1",
-        "Url": "https://localhost:7071/swagger/v1/swagger.json"
-      }
+      "Key": "products",
+      "Config": [
+        {
+          "Name": "Products API",
+          "Version": "v1",
+          "Url": "https://localhost:7071/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "cart",
+      "Config": [
+        {
+          "Name": "Cart API",
+          "Version": "v1",
+          "Url": "https://localhost:7073/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "order",
+      "Config": [
+        {
+          "Name": "Order API",
+          "Version": "v1",
+          "Url": "https://localhost:7077/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "payment",
+      "Config": [
+        {
+          "Name": "Payments API",
+          "Version": "v1",
+          "Url": "https://localhost:7079/swagger/v1/swagger.json"
+        }
+      ]
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5280"
+    "BaseUrl": "https://localhost:7195"
   }
 }

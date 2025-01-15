@@ -10,27 +10,20 @@ builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOcelot();
 builder.Services.AddSwaggerForOcelot(builder.Configuration);
+builder.Services.AddCors();
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
 //app.UseHttpsRedirection();
 app.MapControllers();
-
-//Use ocelot
-// Enable Swagger UI for Ocelot
-try
+app.UseCors(policy => policy
+.AllowAnyMethod()
+.AllowAnyHeader()
+.AllowAnyOrigin()
+);
+app.UseSwaggerForOcelotUI(opt =>
 {
-    app.UseSwaggerForOcelotUI(opt =>
-    {
-        opt.PathToSwaggerGenerator = "/swagger/docs/v1";
-    });
-}
-catch (Exception)
-{
-
-	throw;
-}
+    opt.PathToSwaggerGenerator = "/swagger/docs";
+});
 await app.UseOcelot();
 
 app.Run();
