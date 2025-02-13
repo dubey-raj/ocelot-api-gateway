@@ -1,0 +1,124 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/user/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+      "DownstreamPathTemplate": "/user-api/user/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com",
+          "port": 80
+        }
+      ],
+      "SwaggerKey": "user"
+    },
+    {
+      "UpstreamPathTemplate": "/product-api/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+      "DownstreamPathTemplate": "/product-api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com",
+          "Port": 80
+        }
+      ],
+      "SwaggerKey": "products"
+    },
+    {
+      "UpstreamPathTemplate": "/cart-api/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+      "DownstreamPathTemplate": "/cart-api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com",
+          "Port": 80
+        }
+      ],
+      "SwaggerKey": "cart"
+    },
+    {
+      "UpstreamPathTemplate": "/order-api/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+      "DownstreamPathTemplate": "/order-api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com",
+          "Port": 80
+        }
+      ],
+      "SwaggerKey": "order"
+    },
+    {
+      "UpstreamPathTemplate": "/payment-api/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+      "DownstreamPathTemplate": "/payment-api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com",
+          "Port": 80
+        }
+      ],
+      "SwaggerKey": "payment"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "user",
+      "Config": [
+        {
+          "Name": "Users API",
+          "Version": "v1",
+          "Url": "http://app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com/user-api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "products",
+      "Config": [
+        {
+          "Name": "Products API",
+          "Version": "v1",
+          "Url": "http://app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com/product-api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "cart",
+      "Config": [
+        {
+          "Name": "Cart API",
+          "Version": "v1",
+          "Url": "http://app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com/cart-api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "order",
+      "Config": [
+        {
+          "Name": "Order API",
+          "Version": "v1",
+          "Url": "http://app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com/order-api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "payment",
+      "Config": [
+        {
+          "Name": "Payments API",
+          "Version": "v1",
+          "Url": "http://app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com/payment-api/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7195"
+  }
+}

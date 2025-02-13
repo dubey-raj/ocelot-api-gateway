@@ -1,0 +1,7 @@
+Region = "eu-north-1"
+vpc_id = "vpc-0ed3411bc6ebf5c00"
+Application = "api-gateway"
+ArtifactoryRepo = "dubeyraj/apigateway"
+EnvCode = "dev"
+EnvTag = "Development"
+SolTag = "api-gateway"

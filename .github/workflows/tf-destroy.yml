@@ -1,0 +1,66 @@
+# Run this workflow manually from GitHub to destroy Development environment
+name: "Destroy environment"
+run-name: Environment Destroyed by ${{ github.actor}}
+on:
+  workflow_dispatch:
+
+permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
+env:
+  TF_LOG: INFO
+  AWS_REGION: eu-north-1
+  AWS_BUCKET_NAME: ${{ secrets.TF_STATE_BUCKET_NAME }}
+  AWS_BUCKET_KEY_NAME: ${{ secrets.TF_STATE_BUCKET_KEY }}
+
+jobs:
+  destroy_development:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./infrastructure/terraform/build
+    environment: 
+      name: dev
+    env:
+      TF_VAR_ImageTag: 3
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: eu-north-1
+          role-to-assume: ${{ secrets.AWS_ROLE }}
+          role-session-name: GitHub-Actions-OIDC-TERRAFORM 
+
+      - name: Terraform Setup
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.8
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check -no-color
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -backend-config="bucket=${{ secrets.TF_STATE_BUCKET_NAME }}" -backend-config="key=api-gateway/dev/terraform.tfstate" -backend-config="region=eu-north-1" -backend-config="encrypt=true" -backend-config="dynamodb_table=${{ secrets.TF_STATE_DYNAMODB_TABLE }}" -input=false
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Run Terraform plan
+        id: plan
+        run: terraform plan -destroy -no-color -input=false
+        continue-on-error: true
+
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1
+
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve -input=false
