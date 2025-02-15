@@ -28,10 +28,33 @@ output "alb_dns_name" {
 
 # Create ALB listener
 # WARNING: Consider changing port to 443 and protocol to HTTPS for production environments 
-resource "aws_lb_listener" "alb_listener" {
+resource "aws_lb_listener" "alb_listener_http" {
   load_balancer_arn = aws_lb.alb.arn
   port              = "80"
   protocol          = "HTTP"
+
+  default_action {
+    type = "redirect"
+
+    redirect {
+      protocol    = "HTTPS"
+      port        = "443"
+      status_code = "HTTP_301"
+    }
+  }
+
+  tags = {
+    Name  = format("%s-%s-%s-%s", "lbl", var.Application, var.EnvCode, var.Region)
+    rtype = "network"
+  }
+}
+
+resource "aws_lb_listener" "alb_listener_https" {
+  load_balancer_arn = aws_lb.alb.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-2021-06"
+  certificate_arn   = var.SSLCertificateARN
 
   default_action {
     type             = "forward"
@@ -83,7 +106,15 @@ resource "aws_security_group" "web01" {
   vpc_id      = data.aws_vpc.selected.id
 
   ingress {
-    description = "Web Inbound"
+    description = "Web Inbound https"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "Web Inbound http"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"

@@ -14,6 +14,12 @@ variable "Application" {
   description = "Application used to name all resources"
   type        = string
 }
+
+variable "SSLCertificateARN"{
+  description = "SSL certificate for https traffic"
+  type        = string
+}
+
 variable "SolTag" {
   description = "Solution tag value. All resources are created with a 'Solution' tag name and the value you set here"
   type        = string

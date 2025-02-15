@@ -1,6 +1,7 @@
 Region = "eu-north-1"
 vpc_id = "vpc-0ed3411bc6ebf5c00"
 Application = "api-gateway"
+SSLCertificateARN = "arn:aws:acm:eu-north-1:934076056444:certificate/19699693-a8f0-4be7-aa5f-eafcecab61de"
 ArtifactoryRepo = "dubeyraj/apigateway"
 EnvCode = "dev"
 EnvTag = "Development"
