@@ -119,6 +119,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:7195"
+    "BaseUrl": "http://app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com"
   }
 }
