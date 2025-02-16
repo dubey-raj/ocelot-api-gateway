@@ -14,9 +14,9 @@
       "SwaggerKey": "user"
     },
     {
-      "UpstreamPathTemplate": "/product/{everything}",
+      "UpstreamPathTemplate": "/product-api/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
-      "DownstreamPathTemplate": "/prd/{everything}",
+      "DownstreamPathTemplate": "/product-api/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -27,7 +27,7 @@
       "SwaggerKey": "products"
     },
     {
-      "DownstreamPathTemplate": "/cart/{everything}",
+      "DownstreamPathTemplate": "/cart-api/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -35,12 +35,12 @@
           "Port": 7073
         }
       ],
-      "UpstreamPathTemplate": "/cart/{everything}",
+      "UpstreamPathTemplate": "/cart-api/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
       "SwaggerKey": "cart"
     },
     {
-      "DownstreamPathTemplate": "/order/{everything}",
+      "DownstreamPathTemplate": "/order-api/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -48,12 +48,12 @@
           "Port": 7077
         }
       ],
-      "UpstreamPathTemplate": "/order/{everything}",
+      "UpstreamPathTemplate": "/order-api/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
       "SwaggerKey": "order"
     },
     {
-      "DownstreamPathTemplate": "/payments/{everything}",
+      "DownstreamPathTemplate": "/payment-api/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -61,7 +61,7 @@
           "Port": 7079
         }
       ],
-      "UpstreamPathTemplate": "/payments/{everything}",
+      "UpstreamPathTemplate": "/payment-api/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
       "SwaggerKey": "payment"
     }
@@ -73,7 +73,7 @@
         {
           "Name": "Users API",
           "Version": "v1",
-          "Url": "https://localhost:7075/swagger/v1/swagger.json"
+          "Url": "https://localhost:7075/user-api/swagger/v1/swagger.json"
         }
       ]
     },
@@ -83,7 +83,7 @@
         {
           "Name": "Products API",
           "Version": "v1",
-          "Url": "https://localhost:7071/swagger/v1/swagger.json"
+          "Url": "https://localhost:7071/product-api/swagger/v1/swagger.json"
         }
       ]
     },
@@ -93,7 +93,7 @@
         {
           "Name": "Cart API",
           "Version": "v1",
-          "Url": "https://localhost:7073/swagger/v1/swagger.json"
+          "Url": "https://localhost:7073/cart-api/swagger/v1/swagger.json"
         }
       ]
     },
@@ -103,7 +103,7 @@
         {
           "Name": "Order API",
           "Version": "v1",
-          "Url": "https://localhost:7077/swagger/v1/swagger.json"
+          "Url": "https://localhost:7077/order-api/swagger/v1/swagger.json"
         }
       ]
     },
@@ -113,7 +113,7 @@
         {
           "Name": "Payments API",
           "Version": "v1",
-          "Url": "https://localhost:7079/swagger/v1/swagger.json"
+          "Url": "https://localhost:7079/payment-api/swagger/v1/swagger.json"
         }
       ]
     }
