@@ -79,6 +79,7 @@
     },
     {
       "Key": "products",
+      "TakeServersFromDownstreamService": true,
       "Config": [
         {
           "Name": "Products API",
