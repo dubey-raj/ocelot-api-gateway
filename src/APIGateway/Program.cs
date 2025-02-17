@@ -1,4 +1,5 @@
 using APIGateway.Middlewares;
+using MMLib.SwaggerForOcelot.Configuration;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -25,7 +26,6 @@ builder.Services.AddCors();
 
 var app = builder.Build();
 
-//app.UseHttpsRedirection();
 app.MapControllers();
 app.UseRouting();
 app.UseEndpoints(endpoints =>
@@ -41,10 +41,12 @@ app.UseCors(policy => policy
 .AllowAnyOrigin()
 );
 app.UseMiddleware<GlobalExceptionMiddleware>();
+app.UseSwagger();
 app.UseSwaggerForOcelotUI(opt =>
 {
     opt.PathToSwaggerGenerator = "/swagger/docs";
-});
-await app.UseOcelot();
+    opt.DownstreamSwaggerEndPointBasePath = "/swagger/docs";
+}).UseOcelot().Wait();
+app.UseOcelot().Wait();
 
 app.Run();

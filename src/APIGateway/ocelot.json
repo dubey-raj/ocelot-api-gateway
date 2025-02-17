@@ -119,6 +119,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com"
+    "BaseUrl": "https://alb-api-gateway-dev-1466530795.eu-north-1.elb.amazonaws.com"
   }
 }
