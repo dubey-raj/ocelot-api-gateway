@@ -14,6 +14,22 @@
       "SwaggerKey": "user"
     },
     {
+      "UpstreamPathTemplate": "/product-api/inventory/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+      "DownstreamPathTemplate": "/product-api/inventory/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com",
+          "Port": 80
+        }
+      ],
+      "SwaggerKey": "products_inv",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtAuth"
+      }
+    },
+    {
       "UpstreamPathTemplate": "/product-api/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
       "DownstreamPathTemplate": "/product-api/{everything}",
@@ -24,11 +40,7 @@
           "Port": 80
         }
       ],
-      "SwaggerKey": "products",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtAuth",
-        "AllowedScopes": []
-      }
+      "SwaggerKey": "products"
     },
     {
       "UpstreamPathTemplate": "/cart-api/{everything}",
@@ -43,8 +55,7 @@
       ],
       "SwaggerKey": "cart",
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtAuth",
-        "AllowedScopes": []
+        "AuthenticationProviderKey": "JwtAuth"
       }
     },
     {
@@ -60,8 +71,7 @@
       ],
       "SwaggerKey": "order",
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtAuth",
-        "AllowedScopes": []
+        "AuthenticationProviderKey": "JwtAuth"
       }
     },
     {
@@ -77,8 +87,7 @@
       ],
       "SwaggerKey": "payment",
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtAuth",
-        "AllowedScopes": []
+        "AuthenticationProviderKey": "JwtAuth"
       }
     }
   ],
@@ -90,6 +99,16 @@
           "Name": "Users API",
           "Version": "v1",
           "Url": "http://app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com/user-api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "products_inv",
+      "Config": [
+        {
+          "Name": "Products Inventory API",
+          "Version": "v1",
+          "Url": "http://app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com/product-api/swagger/v1/swagger.json"
         }
       ]
     },
