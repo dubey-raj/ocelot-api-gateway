@@ -24,7 +24,11 @@
           "Port": 80
         }
       ],
-      "SwaggerKey": "products"
+      "SwaggerKey": "products",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtAuth",
+        "AllowedScopes": []
+      }
     },
     {
       "UpstreamPathTemplate": "/cart-api/{everything}",
@@ -37,7 +41,11 @@
           "Port": 80
         }
       ],
-      "SwaggerKey": "cart"
+      "SwaggerKey": "cart",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtAuth",
+        "AllowedScopes": []
+      }
     },
     {
       "UpstreamPathTemplate": "/order-api/{everything}",
@@ -50,7 +58,11 @@
           "Port": 80
         }
       ],
-      "SwaggerKey": "order"
+      "SwaggerKey": "order",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtAuth",
+        "AllowedScopes": []
+      }
     },
     {
       "UpstreamPathTemplate": "/payment-api/{everything}",
@@ -63,7 +75,11 @@
           "Port": 80
         }
       ],
-      "SwaggerKey": "payment"
+      "SwaggerKey": "payment",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtAuth",
+        "AllowedScopes": []
+      }
     }
   ],
   "SwaggerEndPoints": [

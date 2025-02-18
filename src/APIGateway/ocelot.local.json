@@ -24,7 +24,11 @@
           "Port": 7071
         }
       ],
-      "SwaggerKey": "products"
+      "SwaggerKey": "products",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtAuth",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/cart-api/{everything}",
@@ -37,7 +41,11 @@
       ],
       "UpstreamPathTemplate": "/cart-api/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
-      "SwaggerKey": "cart"
+      "SwaggerKey": "cart",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtAuth",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/order-api/{everything}",
@@ -50,7 +58,11 @@
       ],
       "UpstreamPathTemplate": "/order-api/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
-      "SwaggerKey": "order"
+      "SwaggerKey": "order",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtAuth",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/payment-api/{everything}",
@@ -63,7 +75,11 @@
       ],
       "UpstreamPathTemplate": "/payment-api/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
-      "SwaggerKey": "payment"
+      "SwaggerKey": "payment",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtAuth",
+        "AllowedScopes": []
+      }
     }
   ],
   "SwaggerEndPoints": [
