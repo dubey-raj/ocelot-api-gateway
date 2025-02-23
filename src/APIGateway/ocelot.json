@@ -30,6 +30,22 @@
       }
     },
     {
+      "UpstreamPathTemplate": "/product-api/admin/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+      "DownstreamPathTemplate": "/product-api/admin/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com",
+          "Port": 80
+        }
+      ],
+      "SwaggerKey": "products_admin",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtAuth"
+      }
+    },
+    {
       "UpstreamPathTemplate": "/product-api/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
       "DownstreamPathTemplate": "/product-api/{everything}",
@@ -107,6 +123,16 @@
       "Config": [
         {
           "Name": "Products Inventory API",
+          "Version": "v1",
+          "Url": "http://app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com/product-api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "products_admin",
+      "Config": [
+        {
+          "Name": "Products Admin API",
           "Version": "v1",
           "Url": "http://app-alb-eu-north-1-1002820568.eu-north-1.elb.amazonaws.com/product-api/swagger/v1/swagger.json"
         }

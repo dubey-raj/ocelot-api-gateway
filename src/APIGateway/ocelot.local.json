@@ -14,6 +14,38 @@
       "SwaggerKey": "user"
     },
     {
+      "UpstreamPathTemplate": "/product-api/inventory/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+      "DownstreamPathTemplate": "/product-api/inventory/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7071
+        }
+      ],
+      "SwaggerKey": "products_inv",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtAuth"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/product-api/admin/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+      "DownstreamPathTemplate": "/product-api/admin/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7071
+        }
+      ],
+      "SwaggerKey": "products_admin",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtAuth"
+      }
+    },
+    {
       "UpstreamPathTemplate": "/product-api/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
       "DownstreamPathTemplate": "/product-api/{everything}",
@@ -24,11 +56,7 @@
           "Port": 7071
         }
       ],
-      "SwaggerKey": "products",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtAuth",
-        "AllowedScopes": []
-      }
+      "SwaggerKey": "products"
     },
     {
       "DownstreamPathTemplate": "/cart-api/{everything}",
@@ -90,6 +118,26 @@
           "Name": "Users API",
           "Version": "v1",
           "Url": "https://localhost:7075/user-api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "products_inv",
+      "Config": [
+        {
+          "Name": "Products Inventory API",
+          "Version": "v1",
+          "Url": "https://localhost:7071/product-api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "products_admin",
+      "Config": [
+        {
+          "Name": "Products Admin API",
+          "Version": "v1",
+          "Url": "https://localhost:7071/product-api/swagger/v1/swagger.json"
         }
       ]
     },
