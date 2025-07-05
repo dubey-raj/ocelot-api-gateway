@@ -1,9 +1,9 @@
 {
   "Routes": [
     {
-      "UpstreamPathTemplate": "/user/{everything}",
+      "UpstreamPathTemplate": "/user-api/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
-      "DownstreamPathTemplate": "/user-api/user/{everything}",
+      "DownstreamPathTemplate": "/user-api/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -11,72 +11,15 @@
           "Port": 7075
         }
       ],
-      "SwaggerKey": "user"
-    },
-    {
-      "UpstreamPathTemplate": "/product-api/inventory/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
-      "DownstreamPathTemplate": "/product-api/inventory/{everything}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7071
-        }
-      ],
-      "SwaggerKey": "products_inv",
+      "SwaggerKey": "user",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtAuth"
       }
     },
     {
-      "UpstreamPathTemplate": "/product-api/admin/{everything}",
+      "UpstreamPathTemplate": "/claim-service/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
-      "DownstreamPathTemplate": "/product-api/admin/{everything}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7071
-        }
-      ],
-      "SwaggerKey": "products_admin",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtAuth"
-      }
-    },
-    {
-      "UpstreamPathTemplate": "/product-api/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
-      "DownstreamPathTemplate": "/product-api/{everything}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7071
-        }
-      ],
-      "SwaggerKey": "products"
-    },
-    {
-      "DownstreamPathTemplate": "/cart-api/{everything}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7073
-        }
-      ],
-      "UpstreamPathTemplate": "/cart-api/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
-      "SwaggerKey": "cart",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtAuth",
-        "AllowedScopes": []
-      }
-    },
-    {
-      "DownstreamPathTemplate": "/order-api/{everything}",
+      "DownstreamPathTemplate": "/claim-service/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -84,29 +27,9 @@
           "Port": 7077
         }
       ],
-      "UpstreamPathTemplate": "/order-api/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
-      "SwaggerKey": "order",
+      "SwaggerKey": "claims",
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtAuth",
-        "AllowedScopes": []
-      }
-    },
-    {
-      "DownstreamPathTemplate": "/payment-api/{everything}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7079
-        }
-      ],
-      "UpstreamPathTemplate": "/payment-api/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
-      "SwaggerKey": "payment",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "JwtAuth",
-        "AllowedScopes": []
+        "AuthenticationProviderKey": "JwtAuth"
       }
     }
   ],
@@ -122,62 +45,12 @@
       ]
     },
     {
-      "Key": "products_inv",
+      "Key": "claims",
       "Config": [
         {
-          "Name": "Products Inventory API",
+          "Name": "Claims API",
           "Version": "v1",
-          "Url": "https://localhost:7071/product-api/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
-      "Key": "products_admin",
-      "Config": [
-        {
-          "Name": "Products Admin API",
-          "Version": "v1",
-          "Url": "https://localhost:7071/product-api/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
-      "Key": "products",
-      "Config": [
-        {
-          "Name": "Products API",
-          "Version": "v1",
-          "Url": "https://localhost:7071/product-api/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
-      "Key": "cart",
-      "Config": [
-        {
-          "Name": "Cart API",
-          "Version": "v1",
-          "Url": "https://localhost:7073/cart-api/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
-      "Key": "order",
-      "Config": [
-        {
-          "Name": "Order API",
-          "Version": "v1",
-          "Url": "https://localhost:7077/order-api/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
-      "Key": "payment",
-      "Config": [
-        {
-          "Name": "Payments API",
-          "Version": "v1",
-          "Url": "https://localhost:7079/payment-api/swagger/v1/swagger.json"
+          "Url": "https://localhost:7077/claim-service/swagger/v1/swagger.json"
         }
       ]
     }
